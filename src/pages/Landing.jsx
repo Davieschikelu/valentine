@@ -66,17 +66,35 @@ export default function Landing() {
           </motion.p>
         </div>
 
-        <Card className="text-center">
+        <Card className="text-center mb-6">
           <div className="space-y-4">
+            <h2 className="text-xl font-bold bg-linear-to-r from-valentine-primary to-rose-400 bg-clip-text text-transparent">Challenge your Partner</h2>
             <Button 
               className="w-full text-lg py-6"
               onClick={() => navigate('/create')}
             >
               <Sparkles className="mr-2" size={24} />
-              Create Your Quiz
+              Create A Quiz
             </Button>
-            <p className="text-sm text-valentine-dark/50 font-medium pt-4">
-              Free, private, and purely for fun.
+            <p className="text-sm text-valentine-dark/50 font-medium pt-2">
+              Test how well they know you!
+            </p>
+          </div>
+        </Card>
+
+        <Card className="text-center">
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">Send a Love Letter</h2>
+            <Button 
+              variant="secondary"
+              className="w-full text-lg py-6 border-pink-400 text-pink-600 hover:bg-pink-50"
+              onClick={() => navigate('/letter/create')}
+            >
+              <Heart className="mr-2" size={24} />
+              Write a Custom Letter
+            </Button>
+            <p className="text-sm text-valentine-dark/50 font-medium pt-2">
+              Send a sweet message & get their reply!
             </p>
           </div>
         </Card>

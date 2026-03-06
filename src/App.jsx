@@ -4,6 +4,9 @@ import CreateQuiz from './pages/CreateQuiz';
 import Dashboard from './pages/Dashboard';
 import TakeQuiz from './pages/TakeQuiz';
 import Result from './pages/Result';
+import CreateLetter from './pages/CreateLetter';
+import LetterDashboard from './pages/LetterDashboard';
+import LetterView from './pages/LetterView';
 
 function App() {
   return (
@@ -15,6 +18,10 @@ function App() {
           <Route path="/dashboard/:quizId" element={<Dashboard />} />
           <Route path="/quiz/:quizId" element={<TakeQuiz />} />
           <Route path="/result/:attemptId" element={<Result />} />
+          
+          <Route path="/letter/create" element={<CreateLetter />} />
+          <Route path="/letter/dashboard/:letterId" element={<LetterDashboard />} />
+          <Route path="/letter/:letterId" element={<LetterView />} />
         </Routes>
       </div>
     </BrowserRouter>

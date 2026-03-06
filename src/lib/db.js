@@ -99,3 +99,59 @@ export const submitAttempt = (quizId, submitterName, answers) => {
   saveToStorage(DB_KEY_ATTEMPTS, attempts);
   return newAttempt;
 };
+
+// --- Letters ---
+const DB_KEY_LETTERS = 'valentine_letters';
+const DB_KEY_REPLIES = 'valentine_replies';
+
+export const getLetters = () => getFromStorage(DB_KEY_LETTERS);
+
+export const getLetterById = (id) => {
+  const letters = getLetters();
+  return letters.find(l => l.id === id) || null;
+};
+
+export const createLetter = (creatorName, recipientName, message) => {
+  const letters = getLetters();
+  const newLetter = {
+    id: uuidv4(),
+    creatorName,
+    recipientName,
+    message,
+    createdAt: new Date().toISOString()
+  };
+  letters.push(newLetter);
+  saveToStorage(DB_KEY_LETTERS, letters);
+  return newLetter;
+};
+
+export const getReplies = () => getFromStorage(DB_KEY_REPLIES);
+
+export const getReplyByLetterId = (letterId) => {
+  const replies = getReplies();
+  return replies.find(r => r.letterId === letterId) || null;
+};
+
+export const submitReply = (letterId, responseType, customMessage = "") => {
+  const replies = getReplies();
+  const letter = getLetterById(letterId);
+  
+  if (!letter) {
+    throw new Error("Letter not found");
+  }
+
+  // Remove existing reply if any, assuming 1 reply per letter
+  const filteredReplies = replies.filter(r => r.letterId !== letterId);
+
+  const newReply = {
+    id: uuidv4(),
+    letterId,
+    responseType, // 'yes', 'no', 'custom'
+    customMessage,
+    submittedAt: new Date().toISOString()
+  };
+
+  filteredReplies.push(newReply);
+  saveToStorage(DB_KEY_REPLIES, filteredReplies);
+  return newReply;
+};
