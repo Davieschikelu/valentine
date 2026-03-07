@@ -35,9 +35,9 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen py-10 px-4 max-w-4xl mx-auto">
-      <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Quiz Dashboard</h1>
-        <p className="text-valentine-dark/70 font-medium">
+      <div className="text-center mb-10 px-2 sm:px-0">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2 break-words">Quiz Dashboard</h1>
+        <p className="text-valentine-dark/70 font-medium break-words">
           Manage your quiz for <span className="text-valentine-primary">{quiz.spouseName}</span>
         </p>
       </div>
@@ -54,11 +54,11 @@ export default function Dashboard() {
             </p>
           </div>
           
-          <div className="bg-valentine-100/50 p-4 rounded-xl flex items-center gap-3 border border-valentine-primary/10">
-            <div className="flex-1 truncate text-sm font-medium text-valentine-dark/80">
+          <div className="bg-valentine-100/50 p-3 sm:p-4 rounded-xl flex flex-col sm:flex-row items-center gap-3 border border-valentine-primary/10">
+            <div className="flex-1 min-w-0 w-full truncate text-sm font-medium text-valentine-dark/80 text-center sm:text-left">
               {quizUrl}
             </div>
-            <Button size="sm" onClick={copyLink} className="flex-shrink-0">
+            <Button size="sm" onClick={copyLink} className="w-full sm:w-auto flex-shrink-0">
               {copied ? <Check size={16} /> : <Copy size={16} />}
               <span className="ml-2">{copied ? 'Copied!' : 'Copy'}</span>
             </Button>
@@ -85,9 +85,9 @@ export default function Dashboard() {
                   animate={{ opacity: 1, x: 0 }}
                   className="bg-white p-4 rounded-xl border border-valentine-primary/10 shadow-sm flex items-center justify-between"
                 >
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg">{attempt.submitterName}</h3>
-                    <p className="text-sm text-valentine-dark/60 font-medium">
+                  <div className="flex-1 min-w-0 pr-3">
+                    <h3 className="font-bold text-lg truncate">{attempt.submitterName}</h3>
+                    <p className="text-sm text-valentine-dark/60 font-medium truncate">
                       Score: <span className="text-valentine-primary font-bold">{attempt.score} / {attempt.totalQuestions}</span>
                     </p>
                   </div>

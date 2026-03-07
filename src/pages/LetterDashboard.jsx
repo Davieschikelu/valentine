@@ -35,9 +35,9 @@ export default function LetterDashboard() {
 
   return (
     <div className="min-h-screen py-10 px-4 max-w-4xl mx-auto">
-      <div className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Letter Dashboard</h1>
-        <p className="text-valentine-dark/70 font-medium">
+      <div className="text-center mb-10 px-2 sm:px-0">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2 break-words">Letter Dashboard</h1>
+        <p className="text-valentine-dark/70 font-medium break-words">
           Awaiting a response from <span className="text-pink-600 font-bold">{letter.recipientName}</span>
         </p>
       </div>
@@ -54,11 +54,11 @@ export default function LetterDashboard() {
             </p>
           </div>
           
-          <div className="bg-pink-50 p-4 rounded-xl flex items-center gap-3 border border-pink-100">
-            <div className="flex-1 truncate text-sm font-medium text-valentine-dark/80 select-all">
+          <div className="bg-pink-50 p-3 sm:p-4 rounded-xl flex flex-col sm:flex-row items-center gap-3 border border-pink-100">
+            <div className="flex-1 min-w-0 w-full truncate text-sm font-medium text-valentine-dark/80 select-all sm:text-left text-center">
               {letterUrl}
             </div>
-            <Button size="sm" onClick={copyLink} className="shrink-0 bg-pink-500 hover:bg-pink-600">
+            <Button size="sm" onClick={copyLink} className="w-full sm:w-auto shrink-0 bg-pink-500 hover:bg-pink-600">
               {copied ? <Check size={16} /> : <Copy size={16} />}
               <span className="ml-2">{copied ? 'Copied!' : 'Copy'}</span>
             </Button>
@@ -86,25 +86,25 @@ export default function LetterDashboard() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white p-6 rounded-2xl border-2 border-pink-300 shadow-xl shadow-pink-100"
+              className="bg-white p-4 sm:p-6 rounded-2xl border-2 border-pink-300 shadow-xl shadow-pink-100"
             >
               <div className="text-center mb-4">
                 <div className="inline-block py-1 px-3 bg-pink-100 text-pink-800 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
                   They replied!
                 </div>
                 {reply.responseType === 'yes' && (
-                  <h3 className="text-3xl font-black text-green-500">YES! 🎉</h3>
+                  <h3 className="text-2xl sm:text-3xl font-black text-green-500 break-words">YES! 🎉</h3>
                 )}
                 {reply.responseType === 'no' && (
-                  <h3 className="text-xl font-bold text-red-500">No 😢</h3>
+                  <h3 className="text-xl font-bold text-red-500 break-words">No 😢</h3>
                 )}
                 {reply.responseType === 'custom' && (
-                  <h3 className="text-xl font-bold text-pink-600">They wrote back! 💌</h3>
+                  <h3 className="text-xl font-bold text-pink-600 break-words">They wrote back! 💌</h3>
                 )}
               </div>
               
               {reply.customMessage && (
-                <div className="mt-4 p-4 bg-pink-50 rounded-xl border border-pink-100 italic text-valentine-dark/80 text-center">
+                <div className="mt-4 p-3 sm:p-4 bg-pink-50 rounded-xl border border-pink-100 italic text-valentine-dark/80 text-center break-words text-sm sm:text-base">
                   "{reply.customMessage}"
                 </div>
               )}
